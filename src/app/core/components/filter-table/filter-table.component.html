@@ -1,0 +1,106 @@
+@if (checkboxList.length > 0) {
+<div
+    class="d-inline filter-table {{ className }}"
+    ngbDropdown
+    #dropdown="ngbDropdown"
+    [container]="'body'"
+    (openChange)="openMenuChange($event)"
+>
+    <span class="cursor-pointer" ngbDropdownToggle>
+        <i class="fa-solid fa-square-caret-down"></i>
+    </span>
+
+    <div ngbDropdownMenu class="p-2 minw-250">
+        @if (dropdown.isOpen()) {
+        <div class="position-relative">
+            <div
+                class="cursor-pointer ascending px-1"
+                (click)="onSort('asc')"
+                [class.bg-midnight-blue]="
+                    sortColumn?.column === columnName &&
+                    sortColumn?.direction === 'asc'
+                "
+            >
+                <i class="fa-solid fa-arrow-down-a-z mr-2"></i
+                >{{ "label.ascending_order" | translate }}
+            </div>
+            <div
+                class="cursor-pointer descending px-1"
+                (click)="onSort('desc')"
+                [class.bg-midnight-blue]="
+                    sortColumn?.column === columnName &&
+                    sortColumn?.direction === 'desc'
+                "
+            >
+                <i class="fa-solid fa-arrow-up-a-z mr-2"></i
+                >{{ "label.descending_order" | translate }}
+            </div>
+            <div class="dropdown-divider"></div>
+            <div>
+                <input
+                    [placeholder]="'label.search' | translate"
+                    type="text"
+                    class="full-width form-control"
+                    [(ngModel)]="searchInput"
+                />
+            </div>
+            @if (Lib.isValidArrayData(checkboxList) && Lib.isBlank(searchInput?.trim())) {
+            <div class="ck-items icheck-dark">
+                <input
+                    type="checkbox"
+                    id="{{ checkboxId }}_all"
+                    [checked]="isCheckAll"
+                    (change)="onCheckboxAllChanged($event)"
+                />
+                <label for="{{ checkboxId }}_all">{{
+                    "label.select_all" | translate
+                }}</label>
+            </div>
+
+            <div
+                infiniteScroll
+                (scrolled)="onLoadMore()"
+                [infiniteScrollDistance]="1"
+                [scrollWindow]="false"
+                class="position-relative mt-2"
+                style="max-height: 200px; overflow: auto"
+            >
+                @for (item of checkboxList; track item; let index = $index) {
+                <div class="ck-items icheck-dark">
+                    <input
+                        type="checkbox"
+                        id="{{ checkboxId }}_{{ index }}"
+                        [checked]="item.is_checked"
+                        (change)="onCheckboxChanged(item, $event)"
+                    />
+                    <label for="{{ checkboxId }}_{{ index }}">{{
+                        getDisplayName(item?.name)
+                    }}</label>
+                </div>
+                }
+            </div>
+            }
+            <div class="mt-2">
+                <div class="text-right">
+                    <button
+                        (click)="onOK()"
+                        [disabled]="isDisabled"
+                        class="btn btn-primary mr-2"
+                        type="button"
+                    >
+                        {{ "label.ok" | translate }}
+                    </button>
+                    <button
+                        (click)="onCancel()"
+                        class="btn btn-primary"
+                        type="button"
+                    >
+                        {{ "label.cancel" | translate }}
+                    </button>
+                </div>
+            </div>
+        </div>
+        }
+    </div>
+</div>
+}

@@ -1,0 +1,170 @@
+{
+    "status": "true",
+    "data": [
+        {
+            "id": 1,
+            "name": "業務機能",
+            "desc": "【承認待ち】",
+            "link": "",
+            "total": 0,
+            "child": [
+                {
+                    "id": 2,
+                    "name": "是正処置",
+                    "desc": "",
+                    "link": "",
+                    "total": 1
+                },
+                {
+                    "id": 3,
+                    "name": "予防処置",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 4,
+                    "name": "障害報告・管理",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 5,
+                    "name": "操業日報",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 6,
+                    "name": "申し送り",
+                    "desc": "",
+                    "link": "",
+                    "total": -1
+                },
+                {
+                    "id": 7,
+                    "name": "内製作業",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 8,
+                    "name": "工事情報周知",
+                    "desc": "",
+                    "link": "",
+                    "total": 2
+                },
+                {
+                    "id": 9,
+                    "name": "警報履歴",
+                    "desc": "",
+                    "link": "",
+                    "total": -1
+                },
+                {
+                    "id": 10,
+                    "name": "電力デマンド管理",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 11,
+                    "name": "標準文書管理",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 12,
+                    "name": "分析管理",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 13,
+                    "name": "点検データ記録・管理",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 14,
+                    "name": "トレンド管理",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 15,
+                    "name": "表示・掲示物管理",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 16,
+                    "name": "変更指示書",
+                    "desc": "",
+                    "link": "",
+                    "total": 2
+                },
+                {
+                    "id": 17,
+                    "name": "部品・材料在庫管理",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 18,
+                    "name": "部品・材料発注管理",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 19,
+                    "name": "メンテナンス管理",
+                    "desc": "",
+                    "link": "",
+                    "total": -1
+                },
+                {
+                    "id": 20,
+                    "name": "教育・訓練",
+                    "desc": "",
+                    "link": "",
+                    "total": 0
+                },
+                {
+                    "id": 21,
+                    "name": "資格取得",
+                    "desc": "",
+                    "link": "",
+                    "total": -1
+                }
+            ]
+        },
+        {
+            "id": 22,
+            "name": "管理機能",
+            "desc": "【承認待ち】",
+            "link": "",
+            "total": 0,
+            "child": [
+                {
+                    "id": 23,
+                    "name": "グループ管理",
+                    "desc": "",
+                    "link": "",
+                    "total": 1
+                }
+            ]
+        }
+    ]
+}

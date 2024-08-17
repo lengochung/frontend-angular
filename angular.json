@@ -3,12 +3,12 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "front": {
+    "FacilityOperationsMgmtSystem": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
-        }
+            "style": "scss"
+          }
       },
       "root": "",
       "sourceRoot": "src",
@@ -17,49 +17,71 @@
         "build": {
           "builder": "@angular-devkit/build-angular:application",
           "options": {
-            "outputPath": "dist/front",
+            "outputPath": "dist/facility",
             "index": "src/index.html",
             "browser": "src/main.ts",
             "polyfills": [
               "zone.js"
             ],
             "tsConfig": "tsconfig.app.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
-              "src/styles.scss"
-            ],
-            "scripts": [],
-            "server": "src/main.server.ts",
-            "prerender": true,
-            "ssr": {
-              "entry": "server.ts"
-            }
+							"node_modules/bootstrap/dist/css/bootstrap.min.css",
+							"node_modules/@fortawesome/fontawesome-free/css/all.min.css",
+							"node_modules/ngx-toastr/toastr.css",
+                            "node_modules/leaflet/dist/leaflet.css",
+							"src/styles.scss"
+						],
+						"scripts": [
+							"node_modules/jquery/dist/jquery.min.js",
+							"node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "src/assets/js/adminlte.min.js",
+              "src/assets/js/chart.js/Chart.min.js"
+						]
           },
           "configurations": {
             "production": {
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
-                  "maximumError": "1mb"
+                  "maximumWarning": "512mb",
+                  "maximumError": "1024mb"
                 },
                 {
                   "type": "anyComponentStyle",
-                  "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumWarning": "512mb",
+                  "maximumError": "1024mb"
                 }
               ],
-              "outputHashing": "all"
+              "outputHashing": "all",
+              "fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.prod.ts"
+								}
+							]
             },
-            "development": {
-              "optimization": false,
-              "extractLicenses": false,
-              "sourceMap": true
-            }
+            "staging": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true,
+							"fileReplacements": [
+								{
+									"replace": "src/environments/environment.ts",
+									"with": "src/environments/environment.stag.ts"
+								}
+							]
+						},
+						"development": {
+							"optimization": false,
+							"extractLicenses": false,
+							"sourceMap": true,
+							"namedChunks": true
+						}
           },
           "defaultConfiguration": "production"
         },
@@ -67,10 +89,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "front:build:production"
+              "buildTarget": "FacilityOperationsMgmtSystem:build:production"
             },
             "development": {
-              "buildTarget": "front:build:development"
+              "buildTarget": "FacilityOperationsMgmtSystem:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -78,7 +100,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "front:build"
+            "buildTarget": "FacilityOperationsMgmtSystem:build"
           }
         },
         "test": {
@@ -89,7 +111,6 @@
               "zone.js/testing"
             ],
             "tsConfig": "tsconfig.spec.json",
-            "inlineStyleLanguage": "scss",
             "assets": [
               "src/favicon.ico",
               "src/assets"
@@ -99,11 +120,23 @@
             ],
             "scripts": []
           }
+        },
+        "lint": {
+          "builder": "@angular-eslint/builder:lint",
+          "options": {
+            "lintFilePatterns": [
+              "src/**/*.ts",
+              "src/**/*.html"
+            ]
+          }
         }
       }
     }
   },
   "cli": {
-    "analytics": "ca8cea44-9f2b-414e-995c-29126fae2f3f"
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ],
+    "analytics": "725b8427-7013-4a1a-9505-7bcbf48eaf76"
   }
 }

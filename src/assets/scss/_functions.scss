@@ -1,0 +1,87 @@
+@mixin hover {
+    @media(hover: hover) {
+        &:hover {
+            transition: all .2s;
+            opacity: 0.7;
+            filter: alpha(opacity=70);
+            -ms-filter: "alpha(opacity=70)";
+        }
+    }
+
+    @media(hover: none) {
+        &:active {
+            opacity: 1;
+            filter: alpha(opacity=100);
+            -ms-filter: "alpha(opacity=100)";
+        }
+    }
+}
+/**
+ * Mixin to create CSS classes with width, min width, min height increasing with each step.
+ * @param {length} $maxValue - Maximum value of width.
+ * @param {length} $step - step increase of width.
+ */
+@mixin generateDimensionClasses($maxValue: 700px, $step: 5px) {
+    // Initializing the $currentValue variable with an initial value is the step.
+    $currentValue: $step;
+
+    @while $currentValue <=$maxValue {
+        // Remove 'px' from the value of $currentValue.
+        $className: str-slice(#{ $currentValue }, 0, -3);
+        .w-#{$className} {
+            width: $currentValue;
+            min-width: $currentValue;
+        }
+        .minw-#{$className} {
+            min-width: $currentValue;
+        }
+        .maxw-#{$className} {
+            max-width: $currentValue;
+        }
+        .minh-#{$className} {
+            min-height: $currentValue;
+        }
+        // Increment the value of $currentValue by $step for the next loop.
+        $currentValue: $currentValue + $step;
+    }
+}
+/**
+ * Mixin to create CSS classes with padding and margin increasing with each step.
+ * @param {length} $maxValue - Maximum value of padding and margin.
+ * @param {length} $step - Step increase of padding and margin.
+ */
+@mixin generatePaddingAndMarginClasses($maxValue: 100px, $step: 1px) {
+    // Initializing the $currentValue variable with an initial value is the step.
+    $currentValue: $step;
+
+    @while $currentValue <=$maxValue {
+        // Remove 'px' from the value of $currentValue.
+        $className: str-slice(#{ $currentValue }, 0, -3);
+        .pl-#{$className} {
+            padding-left: $currentValue;
+        }
+        .pr-#{$className} {
+            padding-right: $currentValue;
+        }
+        .pb-#{$className} {
+            padding-bottom: $currentValue;
+        }
+        .pt-#{$className} {
+            padding-top: $currentValue;
+        }
+        .ml-#{$className} {
+            margin-left: $currentValue;
+        }
+        .mr-#{$className} {
+            margin-right: $currentValue;
+        }
+        .mb-#{$className} {
+            margin-bottom: $currentValue;
+        }
+        .mt-#{$className} {
+            margin-top: $currentValue;
+        }
+        // Increment the value of $currentValue by $step for the next loop.
+        $currentValue: $currentValue + $step;
+    }
+}

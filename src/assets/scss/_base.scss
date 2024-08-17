@@ -1,0 +1,23 @@
+html {font-size: $font-size-base;}
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    word-break: break-word;
+    color: #1A1311;
+    position: relative;
+}
+.container, .container-lg, .container-md, .container-sm, .container-xl {
+    max-width: 1920px;
+}
+strong, b{
+    font-weight: bold !important;
+}
+/**
+ * Call the default mixin to create CSS classes with width, min width, min height
+ * gradually increase from 5px to 700px, each step is 5px.
+ */
+@include generateDimensionClasses;
+/**
+ * Call the default mixin to create CSS classes with padding and margin
+ * incrementally from 1px to 100px, each step is 1px.
+ */
+@include generatePaddingAndMarginClasses;

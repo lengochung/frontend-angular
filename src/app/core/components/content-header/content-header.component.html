@@ -1,0 +1,23 @@
+<div class="content-header pl-0 pr-0">
+    <div class="row">
+        <div class="col-sm-6">
+            <h2 class="m-0">{{pageTitle}}</h2>
+        </div><!-- /.col -->
+        <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+                <li class="breadcrumb-item"><a (click)="goToPage()">{{'label.home' | translate}}</a></li>
+                @if (curBreadcrumbs && curBreadcrumbs.length > 0) {
+                    @for (item of curBreadcrumbs; track $index) {
+                        <li class="breadcrumb-item" [class.active]="item.link">
+                            @if (item.link) {
+                                <a (click)="goToPage(item)">{{item.name}}</a>
+                            } @else {
+                                {{item.name}}   
+                            }
+                        </li>
+                    }
+                }
+            </ol>
+        </div><!-- /.col -->
+    </div><!-- /.row -->
+</div>

@@ -1,0 +1,213 @@
+<app-content-header
+    [pageTitle]="'label.user_account_management' | translate"
+    [breadcrumbs]="'label.user_account_management' | translate"></app-content-header>
+<div
+    class="card"
+    id="user-create">
+    <div class="card-body">
+        <form
+            [formGroup]="form"
+            (ngSubmit)="onSaveUser()"
+            class="mt-3">
+            <div class="action-box">
+                <div class="btns-box">
+                    <button
+                        class="btn btn-primary"
+                        type="submit">
+                        <i class="fa fa-save mr-2"></i>{{ 'label.save' | translate }}
+                    </button>
+                    <button
+                        class="btn btn-primary"
+                        type="button"
+                        (click)="onGoBack()">
+                        <i class="mr-2 fa-solid fa-xmark"></i>{{ 'label.close' | translate }}
+                    </button>
+                </div>
+            </div>
+            <div
+                class="row"
+                *ngIf="Lib.isValidArrayData(validator.errors)">
+                <div class="col-12">
+                    <app-form-errors [errors]="validator.errors"></app-form-errors>
+                </div>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-bordered table-head-fixed table-form">
+                    <tbody>
+                        <tr>
+                            <td
+                                class="w-90 bg-blue header-cell"
+                                rowspan="5">
+                                {{ 'label.basic_infomation' | translate }}
+                            </td>
+                            <td class="label-cell required bg-dark-blue">
+                                <span>{{ 'label.first_name' | translate }}</span>
+                            </td>
+                            <td class="py-2 align-top minw-120">
+                                <input
+                                    type="text"
+                                    class="full-width form-control"
+                                    [maxLength]="validator.NAME_ML"
+                                    formControlName="user_first_name" />
+                            </td>
+                            <!-- /.user first name -->
+                            <td class="label-cell required bg-dark-blue w-70">
+                                <span>{{ 'label.last_name' | translate }}</span>
+                            </td>
+                            <td class="py-2 align-top minw-120">
+                                <input
+                                    type="text"
+                                    class="full-width form-control"
+                                    [maxLength]="validator.NAME_ML"
+                                    formControlName="user_last_name" />
+                            </td>
+                            <!-- /.user last name -->
+                        </tr>
+                        <tr>
+                            <td class="label-cell required bg-dark-blue">
+                                <span>{{ 'label.employee_no' | translate }}</span>
+                            </td>
+                            <td
+                                colspan="3"
+                                class="py-2">
+                                <input
+                                    type="text"
+                                    class="full-width form-control"
+                                    [maxLength]="validator.EMPLOYEE_NO_ML"
+                                    formControlName="employee_no" />
+                            </td>
+                        </tr>
+                        <!-- /.employee no -->
+                        <tr>
+                            <td class="label-cell bg-dark-blue">{{ 'label.affiliation' | translate }}</td>
+                            <td
+                                colspan="3"
+                                class="py-2">
+                                <input
+                                    type="text"
+                                    class="full-width form-control"
+                                    [maxLength]="validator.AFFILIATION_ML"
+                                    formControlName="affiliation" />
+                            </td>
+                        </tr>
+                        <!-- /.affiliation -->
+                        <tr>
+                            <td class="label-cell bg-dark-blue">{{ 'label.position' | translate }}</td>
+                            <td
+                                colspan="3"
+                                class="py-2">
+                                <input
+                                    type="text"
+                                    class="full-width form-control"
+                                    [maxLength]="validator.POSITION_ML"
+                                    formControlName="position" />
+                            </td>
+                        </tr>
+                        <!-- /.position -->
+                        <tr>
+                            <td class="label-cell required bg-dark-blue">
+                                <span>{{ 'label.email' | translate }}</span>
+                            </td>
+                            <td
+                                colspan="3"
+                                class="py-2">
+                                <input
+                                    type="text"
+                                    class="full-width form-control"
+                                    [maxLength]="validator.EMAIL_ML"
+                                    formControlName="mail" />
+                            </td>
+                        </tr>
+                        <!-- /.permission -->
+                        <tr>
+                            <td
+                                rowspan="3"
+                                class="bg-blue header-cell">
+                                {{ 'label.change_password' | translate }}
+                            </td>
+                            <td class="label-cell bg-dark-blue">{{ 'label.current_password' | translate }}</td>
+                            <td
+                                colspan="3"
+                                class="py-2">
+                                <input
+                                    type="password"
+                                    class="full-width form-control"
+                                    [maxLength]="validator.PASS_ML"
+                                    formControlName="password" />
+                            </td>
+                        </tr>
+                        <!-- /.current password -->
+                        <tr>
+                            <td class="label-cell bg-dark-blue">{{ 'label.new_password' | translate }}</td>
+                            <td
+                                colspan="3"
+                                class="py-2">
+                                <input
+                                    type="password"
+                                    class="full-width form-control"
+                                    [maxLength]="validator.PASS_ML"
+                                    formControlName="new_password" />
+                            </td>
+                        </tr>
+                        <!-- /.new password -->
+                        <tr>
+                            <td class="label-cell bg-dark-blue">{{ 'label.confirm_new_password' | translate }}</td>
+                            <td
+                                colspan="3"
+                                class="py-2">
+                                <input
+                                    type="password"
+                                    class="full-width form-control"
+                                    [maxLength]="validator.PASS_ML"
+                                    formControlName="confirm_new_password" />
+                            </td>
+                        </tr>
+                        <!-- /.confirm new password-->
+                        <tr>
+                            <td
+                                rowspan="4"
+                                class="bg-midnight-blue header-cell">
+                                {{ 'label.management' | translate }}
+                            </td>
+                            <td class="label-cell bg-dark-blue">{{ 'label.user_registration_date' | translate }}</td>
+                            <td
+                                colspan="3"
+                                class="py-2 bg-bady-blue">
+                                {{ userInfo?.add_datetime | date:'yyyy-MM-dd' }}
+                            </td>
+                        </tr>
+                        <!-- /.add date user -->
+                        <tr>
+                            <td class="label-cell bg-dark-blue">{{ 'label.basic_information_update_date' | translate }}</td>
+                            <td
+                                colspan="3"
+                                class="py-2 bg-bady-blue">
+                                {{ userInfo?.update_date }}
+                            </td>
+                        </tr>
+                        <!-- /.update date user -->
+                        <tr>
+                            <td class="label-cell bg-dark-blue">{{ 'label.permission_setting_update_date' | translate }}</td>
+                            <td
+                                colspan="3"
+                                class="py-2 bg-bady-blue">
+                                {{ userInfo?.role_update_date }}
+                            </td>
+                        </tr>
+                        <!-- /.role update date -->
+                        <tr>
+                            <td class="label-cell bg-dark-blue">{{ 'label.password_update_date' | translate }}</td>
+                            <td
+                                colspan="3"
+                                class="py-2 bg-bady-blue">
+                                {{ userInfo?.password_update_date }}
+                            </td>
+                        </tr>
+                        <!-- /.password update date -->
+                    </tbody>
+                </table>
+            </div>
+            <!-- /.table -->
+        </form>
+    </div>
+</div>

@@ -1,0 +1,264 @@
+<div class="dashboard row pt-4">
+    <div class="menu col-lg-3 col-12">
+        <div class="system-menu">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="card-title">
+                        {{ "label.system_menu" | translate }}
+                    </h5>
+                </div>
+                <div class="card-body">
+                    @if (systemMenu && systemMenu.length > 0) {
+                    <ul class="system-menu">
+                        @for (item of systemMenu; track $index) {
+                        <li class="tit"><span class="txt">{{item.name}}</span><span class="desc">{{item.desc}}</span>
+                        </li>
+                        @if (item.child && item.child.length > 0) {
+                        @for (childItem of item.child; track childItem.id; let childIndex = $index;) {
+                        <li>
+                            <a>
+                                <span class="txt"><i class="fas fa-caret-right"></i> {{childItem.name}}</span>
+                                <span class="total" [class.text-danger]="(childItem.total || 0) > 0">
+                                    @if ((childItem.total || 0) >= 0) {
+                                    【{{childItem.total}}】
+                                    }
+                                </span>
+                            </a>
+                        </li>
+                        }
+                        }
+                        }
+                    </ul>
+                    }
+                </div>
+            </div>
+        </div>
+        <div class="weather pc">
+            <div class="weather-inner">
+                <h3>{{Lib.dateFormat(Lib.toDay(), "YYYY年MM月DD日", "YYYY/MM/DD")}}</h3>
+                <div class="img"><img src="./assets/img/weather-icon.png" alt=""></div>
+                <div class="result">
+                    <span class="max">{{weather.temp}}&#8451;</span>/<span
+                        class="min">{{weather.temp_min}}&#8451;</span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="board col-lg-9 col-12">
+        <div class="calendar-filter row">
+            <div class="col-md-6 mb-3">
+                <div class="card day-info">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            {{Lib.dateFormat(dateCalendarSelected, "YYYY年MM月DD日(ddd)", "YYYY/MM/DD")}}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="results">
+                            <li class="tit">内製作業</li>
+                            <li><a><span class="txt">内製作業</span><span class="total">xx件</span></a></li>
+                        </ul>
+                        <ul class="results">
+                            <li class="tit">記録・管理</li>
+                            <li><a><span class="txt">分析管理</span><span class="total">xx件</span></a></li>
+                            <li><a><span class="txt">点検データ記録・管理</span><span class="total">xx件</span></a></li>
+                            <li><a><span class="txt">トレンド管理</span><span class="total">xx件</span></a></li>
+                        </ul>
+                        <ul class="results">
+                            <li class="tit">工事情報</li>
+                            <li><a><span class="txt">工事情報周知</span><span class="total">xx件</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card month-info mb-0">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            {{Lib.dateFormat(dateCalendarSelected, "YYYY年MM月", "YYYY/MM/DD")}}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="results">
+                            <li class="tit bg-orange">実施予定</li>
+                            <li><a><span class="txt">メンテナンス管理</span><span class="total">xx件</span></a></li>
+                            <li><a><span class="txt">教育・訓練</span><span class="total">xx件</span></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <ng-template #t let-date>
+                    <div class="calendar-custom-day text-center" [ngClass]="datepickerDate(date)">
+                        <div class="day">{{ date.day }}</div>
+                        <div class="info">{{ getTextDay(date) }}</div>
+                    </div>
+                </ng-template>
+                <ngb-datepicker outsideDays="hidden" [firstDayOfWeek]="7" [dayTemplate]="t"
+                    [(ngModel)]="dateCalendarSelected" />
+            </div>
+        </div>
+        <div class="group row">
+            <div class="col-md-6 mb-3">
+                <div class="card deadline-alert">
+                    <div class="card-header bg-warning">
+                        <h3 class="card-title">{{ "label.deadline_alert" | translate }}</h3>
+                    </div>
+                    <div class="card-body table-responsive p-0">
+                        <table class="table table-striped table-valign-middle">
+                            <thead>
+                                <tr>
+                                    <th>&nbsp;</th>
+                                    <th>{{ "label.due_soon" | translate }}</th>
+                                    <th>{{ "label.until_today" | translate }}</th>
+                                    <th>{{ "label.overdue" | translate }}</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td class="minw-200">是正処置</td>
+                                    <td class="w-110">-</td>
+                                    <td class="w-110"><a>xx件</a></td>
+                                    <td class="w-110"><a>xx件</a></td>
+                                </tr>
+                                <tr>
+                                    <td>予防処置</td>
+                                    <td>-</td>
+                                    <td><a>xx件</a></td>
+                                    <td><a>xx件</a></td>
+                                </tr>
+                                <tr>
+                                    <td>障害報告・管理</td>
+                                    <td>-</td>
+                                    <td><a>xx件</a></td>
+                                    <td><a>xx件</a></td>
+                                </tr>
+                                <tr>
+                                    <td>操業日報トピック</td>
+                                    <td><a>xx件</a></td>
+                                    <td><a>xx件</a></td>
+                                    <td><a>xx件</a></td>
+                                </tr>
+                                <tr>
+                                    <td>標準文書管理</td>
+                                    <td><a>xx件</a></td>
+                                    <td><a>xx件</a></td>
+                                    <td><a>xx件</a></td>
+                                </tr>
+                                <tr>
+                                    <td>表示・掲示物管理</td>
+                                    <td><a>xx件</a></td>
+                                    <td><a>xx件</a></td>
+                                    <td><a>xx件</a></td>
+                                </tr>
+                                <tr>
+                                    <td>変更指示書</td>
+                                    <td><a>xx件</a></td>
+                                    <td><a>xx件</a></td>
+                                    <td><a>xx件</a></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card h-100 heat-stroke-forecast">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            {{ "label.heat_stroke_forecast" | translate }}
+                        </h5>
+                    </div>
+                    <div class="card-body">
+                        <ul class="results">
+                            <li class="tit d-flex justify-content-around">
+                                <span>{{'label.temperature' | translate}}</span>
+                                <span>{{'label.humidity' | translate}}</span>
+                            </li>
+                            <li class="row">
+                                <div class="col-6 text-center">
+                                    <span class="result {{heatStrokeColorClass}}">{{weather.temp}}</span><span class="char blue">&#8451;</span>
+                                </div>
+                                <div class="col-6 text-center">
+                                    <span class="result {{heatStrokeColorClass}}">{{weather.humidity}}</span><span class="char blue">%</span>
+                                </div>
+                            </li>
+                        </ul>
+                        <ul class="results">
+                            <li class=" text-center tit">
+                                {{'label.heat_stroke' | translate}}
+                            </li>
+                            <li class="row">
+                                <div class="col-sm-auto d-flex">
+                                    <div class="status m-auto" [ngClass]="heatStrokeStatusClass"></div>
+                                </div>
+                                <div class="col-sm mt-2 mt-sm-0">
+                                    <div class="d-flex align-items-center">
+                                        <div class="status-description bg-red">{{'label.red' | translate}}</div>
+                                        <span>{{'label.heat_stroke_red_description' | translate}}</span>
+                                    </div>
+                                    <div class="d-flex mt-2 align-items-center">
+                                        <div class="status-description bg-yellow">{{'label.yellow' | translate}}</div>
+                                        <span>{{'label.heat_stroke_yellow_description' | translate}}</span>
+                                    </div>
+                                    <div class="d-flex mt-2 align-items-center">
+                                        <div class="status-description bg-blue">{{'label.blue' | translate}}</div>
+                                        <span>{{'label.heat_stroke_blue_description' | translate}}</span>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="group row">
+            <div class="col-md-6 mb-3">
+                <div class="card h-100 communicate-management">
+                    <div class="card-header">
+                        <h5 class="card-title">{{"label.manager_communication_matters" | translate}}</h5>
+                    </div>
+                    <div class="card-body recent-content">
+                        <ul class="results">
+                            <li class="tit">{{ "label.recent_content" | translate }}</li>
+                            <li class="pt-2">
+                                <p>*******************</p>
+                                <p>*********************</p>
+                                <p>***************************</p>
+                                <p>************</p>
+                                <p>************</p>
+                                <p>*********************************</p>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 mb-3">
+                <div class="card h-100 alert-status">
+                    <div class="card-header">
+                        <h5 class="card-title">
+                            {{ "label.map_pressure_forecast" | translate }}
+                        </h5>
+                    </div>
+                    <div class="card-body row">
+                        <div class="col-md-6 pr-1">
+                            <div class="map" leaflet [leafletOptions]="cloudsOptions" [leafletLayers]="cloudsLayers"></div>
+                        </div>
+                        <div class="col-md-6 pl-1">
+                            <div class="map" leaflet [leafletOptions]="pressureOptions" [leafletLayers]="pressureLayers"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="weather sp">
+        <div class="weather-inner">
+            <h3>{{Lib.dateFormat(Lib.toDay(), "YYYY年MM月DD日", "YYYY/MM/DD")}}</h3>
+            <div class="img"><img src="./assets/img/weather-icon.png" alt=""></div>
+            <div class="result">
+                <span class="max">{{weather.temp}}&#8451;</span>/<span
+                    class="min">{{weather.temp_min}}&#8451;</span>
+            </div>
+        </div>
+    </div>
+</div>

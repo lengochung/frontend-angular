@@ -1,0 +1,40 @@
+// Predefined Break-points
+$xxl: 1399px;
+$xl: 1199px;
+$lg: 991px;
+$md: 767px;
+$sm: 575px;
+$xsm: 413px;
+@function translate-media-condition($c) {
+    $condMap: ("screen": "only screen",
+        "print": "only print",
+        "retina": "(-webkit-min-device-pixel-ratio: 1.5), (min--moz-device-pixel-ratio: 1.5), (-o-min-device-pixel-ratio: 3/2), (min-device-pixel-ratio: 1.5), (min-resolution: 120dpi)",
+        ">xxl": "(min-width: #{$xxl + 1})",
+        "<xxl": "(max-width: #{$xxl})",
+        ">xl": "(min-width: #{$xl + 1})",
+        "<xl": "(max-width: #{$xl})",
+        ">lg": "(min-width: #{$lg + 1})",
+        "<lg": "(max-width: #{$lg})",
+        ">md": "(min-width: #{$md + 1})",
+        "<md": "(max-width: #{$md})",
+        ">sm": "(min-width: #{$sm + 1})",
+        "<sm": "(max-width: #{$sm})",
+        ">xsm": "(min-width: #{$xsm + 1})",
+        "<xsm": "(max-width: #{$xsm})"
+    );
+    @return map-get($condMap, $c );
+}
+// The mdia mixin
+@mixin media($args...) {
+    $query: "";
+    @each $arg in $args {
+        $op: "";
+        @if ($query !="") {
+            $op: " and ";
+        }
+        $query: $query + $op + translate-media-condition($arg);
+    }
+    @media #{$query} {
+        @content;
+    }
+}

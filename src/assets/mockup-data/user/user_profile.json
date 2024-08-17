@@ -1,0 +1,20 @@
+{
+    "status": "true",
+	"data": {
+		"user_id": 1,
+		"mail": "demo@facility.jp",
+		"user_first_name": "ひかり",
+		"user_last_name": "鈴木",
+        "employee_no": "employeeNo1",
+        "position": "post",
+        "affiliation": "affiliation",
+        "role_id": 1,
+        "role_name": "User",
+        "office_id": 1,
+        "office_name": "B事業所",
+        "password_update_date": "2024-03-25 10:23:09",
+        "role_update_date": "2024-03-12 19:12:12",
+        "add_datetime": "2024-03-01 23:10:55",
+        "upd_datetime": "2024-03-29 00:25:00"
+    }
+}

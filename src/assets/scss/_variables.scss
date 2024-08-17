@@ -1,0 +1,113 @@
+/**
+* color
+*/
+
+$primary: #145DA0;
+$primary-rgb: rgb(20, 93, 160);
+$secondary: #0C2D48;
+$secondary-rgb: rgb(12, 45, 72);
+$tertiary: #2E8BC0;
+$tertiary-rgb: rgb(46, 139, 192);
+$quaternary: #B1D4E0;
+$quaternary-rgb: rgb(177, 212, 224);
+$danger: #dc3545;
+$white: #fff;
+$black: #000;
+$placeholder-color: #999999;
+$gray-100: #F7F9FE;
+/**
+* zindex
+*/
+$zindex-header: 1000;
+$zindex-hamburger-menu: 1005;
+$zindex-sidebar: 999;
+$zindex-sidebar-hover-box: 998;
+$zindex-backdrop: 998;
+$zindex-modal: 1010;
+$zindex-tab-header: 1000;
+/**
+* text color
+*/
+$theme-color: #111111;
+$body-background: $gray-100;
+/**
+* Font size default
+*/
+$font-size-base: 15px;
+/**
+* space
+*/
+$spacer: 0.7rem;
+/**
+* Gap between columns in x direction
+* is used for row margin and col padding overwrite of bootstrap
+*/
+$gutter-x: calc($spacer/2);
+/**
+* Gap between columns in y direction
+*/
+$gutter-y: calc($spacer/2);
+/**
+* header height
+*/
+$header-height: 3rem;
+/**
+* Header height without menu
+*/
+$single-header-height: 2.8rem;
+/**
+* header height in smartphone
+*/
+$header-height-sp: 3rem;
+/**
+* footer height
+*/
+$footer-height: 2rem;
+
+/**
+* Define color for border, border-radius for content groups
+*/
+$border-color: #ddd;
+$border-radius-primary: 0.2rem;
+
+/**
+* Background color code for group titles, table heads...
+*/
+$title-background-primary: #eee;
+$title-background-secondary: #ddd;
+
+/**
+* Defines the values ​​used for the form
+*/
+$form-control-padding: .35rem .5rem;
+
+/**
+* Sidebar left width in open state
+*/
+$sidebar-left-width: 17rem;
+$sidebar-right-width: 17rem;
+/**
+* Sidebar left width in open and closed state
+*/
+$sidebar-left-collapse-width: 3.4rem;
+/**
+* Sidebar left width cho mobile
+*/
+$sidebar-left-width-sp: 300px;
+/**
+* Animation time used for keyframes
+*/
+$animation-timeout: 0.5s;
+$transition-hover: 0.2s;
+
+/**
+* header menu
+*/
+$header-menu: (
+    "background": $secondary,
+    "color": $white,
+    "active-background": $gray-100,
+    "active-color": $primary,
+    "border-color-before": #7AACD9,
+    "border-color-after": #0c78c6,
+);

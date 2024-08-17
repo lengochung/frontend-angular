@@ -1,0 +1,71 @@
+/*
+==============================================================
+======================= Error message ========================
+==============================================================
+*/
+.error-message,
+.not-found{
+    display: inline-block;
+    width: 100%;
+    padding: 10px 10px 10px 50px;
+    margin-bottom: 20px;
+    position: relative;
+    background-color: rgb(255, 251, 251);
+    border: 1px solid rgb(255, 149, 156);
+    color: rgb(255, 59, 39);
+    &::before{
+        font-family: 'Font Awesome 5 Free';
+        content: "\f057";
+        color: red;
+        position: absolute;
+        left: 15px;
+        top: 50%;
+        margin-top: -14px;
+        font-size: 1.3rem;
+        z-index: 100;
+    }
+}
+.not-found{
+    padding: 15px 10px 10px 50px;
+}
+.error-message{
+    &.validation{
+        background: #FFCCBA;
+        color: #D63301;
+    }
+    &.info{
+        background: #BDE5F8;
+        color: #00529B;
+    }
+    &.success{
+        background: #DFF2BF;
+        color: #4F8A10;
+    }
+    &.warning{
+        background: #FEEFB3;
+        color: #9F6000;
+    }
+    &.error{
+        background: #FFBABA;
+        color: #D8000C;
+    }
+    p{
+        margin-bottom: 3px;
+        &:last-child {
+            margin-bottom: 0;
+        }
+    }
+}
+.control-invalid,
+.control-error
+{
+    display: block;
+    width: 100%;
+    color: #dc3545;
+    margin-bottom: 0px;
+}
+/*
+==============================================================
+==================== End Error message =======================
+==============================================================
+*/

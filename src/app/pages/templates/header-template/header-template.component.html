@@ -1,0 +1,62 @@
+@if(!Lib.isObject(userLogin)){
+<div class="single-header bg-primary">
+    <div class="logo header-title">{{'app_name' | translate}}</div>
+</div>
+} @else {
+<nav class="main-header navbar navbar-expand navbar-white bg-primary">
+    <ul class="navbar-nav hamburger-menu">
+        <li class="nav-item">
+            <a class="nav-link" data-widget="pushmenu" href="#" role="button"><i class="fas fa-bars"></i></a>
+        </li>
+    </ul>
+    <div class="container pl-0">
+        <div class="collapse navbar-collapse order-3" id="navbarCollapse">
+            <!-- Left navbar links -->
+            @if (menuList && menuList.length > 0) {
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link" [routerLink]="['/', Constants.APP_URL.DASHBOARD]"><i class="fas fa-home"></i></a>
+                </li>
+                @for (item of menuList; track $index) {
+                    @if ($index > 0) {
+                        <li class="nav-item" [class.dropdown]="item.child && item.child.length > 0">
+                            <a
+                                class="nav-link"
+                                (click)="onMenuClick(item)"
+                                [class.active]="item.active"
+                                [class.dropdown-toggle]="item.child && item.child.length > 0"
+                            >{{item.name}}</a>
+                            @if (item.child && item.child.length > 0) {
+                                <ul class="dropdown-menu border-0 shadow">
+                                    @for (childItem of item.child; track childItem.id; let childIndex = $index;) {
+                                        <li><a (click)="onMenuClick(childItem)" class="dropdown-item">{{childItem.name}}</a></li>
+                                    }
+                                </ul>
+                            }
+                        </li>
+                    }
+                }
+            </ul>
+            }
+        </div>
+        <ul class="order-1 order-md-3 navbar-nav navbar-no-expand ml-auto nav-user-info">
+            <li class="nav-item dropdown">
+                <a class="nav-link">
+                    <i class="far fa-user"></i><span class="pl-1">{{userDisplayName?.user_first_name}} {{userDisplayName?.user_last_name}}</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-lg dropdown-menu-right">
+                    <a [routerLink]="['/' + Constants.APP_URL.USERS.MODULE + '/' + Constants.APP_URL.USERS.USER_ACCOUNT]" class="dropdown-item pt-3 pb-3">
+                        <i class="fas fa-user-edit"></i>
+                        <span class="pl-1">{{'label.edit_profile' | translate}}</span>
+                    </a>
+                    <div class="dropdown-divider"></div>
+                    <a class="dropdown-item pt-3 pb-3" (click)="logout()">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span class="pl-1">{{'label.logout' | translate}}</span>
+                    </a>
+                </div>
+            </li>
+        </ul>
+    </div>
+</nav>
+}

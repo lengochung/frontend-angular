@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+@import "assets/css/adminlte.min.css";
+@import "assets/vendor/icheck-bootstrap/icheck-bootstrap.min.css";
+@import "@ng-select/ng-select/themes/default.theme.css";
+@import "overlayscrollbars/styles/overlayscrollbars.css";
+@import "@angular/cdk/text-field-prebuilt.css";
+@import '@angular/cdk/overlay-prebuilt.css';
+@import "assets/scss/app.scss";

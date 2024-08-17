@@ -1,0 +1,67 @@
+/*
+==============================================================
+========================= 404 page ===========================
+==============================================================
+*/
+.error-page{
+    width: 100%;
+    max-width: 1024px;
+    text-align: center;
+    p{
+        margin-bottom: 0;
+    }
+    .top{
+        display: inline-block;
+        width: 100%;
+        .lg{
+            font-size: 3.5rem;
+            font-weight: bold;
+            line-height: 1.2;
+            padding-bottom: 20px;
+            font-family: Helvetica, sans-serif;
+            margin-top: 40px;
+            display: inline-block;
+            width: 100%;
+        }
+    }
+    .txt-box {
+        font-weight: bold;
+        display: block;
+        font-size: 1.3em;
+        margin-block-start: 0.83em;
+        margin-block-end: 0.83em;
+        margin-inline-start: 0px;
+        margin-inline-end: 0px;
+    }
+    h3 {
+        font-size: 1.3rem;
+        margin-top: 50px;
+    }
+    .explain {
+        border-top: 1px solid #ccc;
+        border-bottom: 1px solid #ccc;
+        line-height: 1.5;
+        margin: 30px auto;
+        padding: 17px;
+        max-width: 640px;
+    }
+}
+
+@include media("<md"){
+    .error-page{
+        text-align: left;
+        .top .lg{
+            text-align: center;
+            font-size: 3rem;
+        }
+        .txt-box{
+            font-size: 1.2rem;
+        }
+    }
+}
+
+/*
+==============================================================
+======================= End 404 page =========================
+==============================================================
+*/
